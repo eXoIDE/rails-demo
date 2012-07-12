@@ -46,7 +46,9 @@ RailsDemo::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+
   config.after_initialize do
-   ActiveRecord::Migrator.migrate(RAILS_ROOT + "/db/migrate" )
-end
+     migdir = File.join(File.dirname(__FILE__), '..','..','db','migrate')
+     ActiveRecord::Migrator.migrate migdir
+  end
 end
